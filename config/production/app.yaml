@@ -1,0 +1,23 @@
+# Production environment configuration.
+# Production requires approval, https, debug off, and at least 3 retained releases
+# (enforced by scripts/validate_config.py).
+environment: production
+
+app:
+  name: opssynk-platform
+  log_level: warning
+  debug: false
+  base_url: https://opssynk.example.com
+  port: 8080
+
+deployment:
+  health_check_path: /healthz
+  health_check_timeout_seconds: 10
+  require_approval: true
+  keep_previous_releases: 3
+
+secrets:
+  # Names only. Values are supplied through the environment, never committed.
+  required_env_vars:
+    - API_SECRET_KEY
+    - SESSION_SECRET

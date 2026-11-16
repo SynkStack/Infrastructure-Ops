@@ -1,0 +1,6 @@
+# Runtime dependencies of the validation scripts
+PyYAML>=6.0,<7
+jsonschema>=4.18,<5
+
+# Test runner
+pytest>=7.4,<10

@@ -1,0 +1,22 @@
+# Staging environment configuration.
+# Staging mirrors production settings so that a passing staging deploy is meaningful.
+environment: staging
+
+app:
+  name: opssynk-platform
+  log_level: info
+  debug: false
+  base_url: https://staging.opssynk.example.com
+  port: 8080
+
+deployment:
+  health_check_path: /healthz
+  health_check_timeout_seconds: 10
+  require_approval: false
+  keep_previous_releases: 3
+
+secrets:
+  # Names only. Values are supplied through the environment, never committed.
+  required_env_vars:
+    - API_SECRET_KEY
+    - SESSION_SECRET

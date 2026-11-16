@@ -1,0 +1,22 @@
+# Development environment configuration.
+# Validated against config/schema/config.schema.json by scripts/validate_config.py.
+environment: development
+
+app:
+  name: opssynk-platform
+  log_level: debug
+  debug: true
+  base_url: http://localhost:8080
+  port: 8080
+
+deployment:
+  health_check_path: /healthz
+  health_check_timeout_seconds: 5
+  require_approval: false
+  keep_previous_releases: 1
+
+secrets:
+  # Names only. Values are supplied through the environment, never committed.
+  required_env_vars:
+    - API_SECRET_KEY
+    - SESSION_SECRET
